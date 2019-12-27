@@ -60,12 +60,7 @@ def prints(obj):
         print(i.value,end=" ")
         print(i.Priority,end=" ")
         print("\n")
-test = PriorityQueue(10,0)
-test.add(20,100)
-test.add(30,300)
-prints(test)
-test.remove()
-prints(test)
+
 
 
         
