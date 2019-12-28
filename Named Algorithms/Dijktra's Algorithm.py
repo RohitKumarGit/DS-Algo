@@ -52,41 +52,8 @@ def algo(v1,v2,grph):
             distances[i]=1000
             pq.add(i,1000)
             previous[i]=None
-    visited=[]
-    dis=[]
-    while True:
-        
-        item=pq.remove().value
-        visited.append(item)
-        print(visited)
-        print("working with main vertex {}".format(item))
-        if item == v2 :
-            break
-        
-        
-        for v in grph.adjacanetyList[item]:
-            
-            vertex=v["node"]
-            if vertex in visited:
-                
-                continue
-            
-            print("adjacent veretx : {}".format(vertex))
-            l=calculateDistance(v1,item,vertex,previous,0)
-            if vertex == v2:
-                dis.append(l)
-            
-            if l < distances[vertex]:
-                
-                distances[vertex] = l
-                print(distances)
-                previous[vertex] = item
-                print(previous)
-                pq.add(vertex,l)
-                for i in pq.values:
-                    print(i.value,end=" ")
-                    print(i.Priority,end=" ")
-                    print ("**",end=" ")
-                print("\n")
-    return min(dis)
-print(algo("A","D",graph))
+    print(previous)
+    print(distances)
+    
+    
+algo("A","D",graph)
