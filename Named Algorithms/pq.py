@@ -4,9 +4,9 @@ class Node:
         self.value=v
         self.Priority=p
 class PriorityQueue:
-    def __init__(self,val,pr):
-        newNode=Node(val,pr)
-        self.values=[newNode]
+    def __init__(self):
+        
+        self.values=[]
     def getParent(self,pr):
         return (pr-1)//2
     def getRight(self,pr):
@@ -35,7 +35,8 @@ class PriorityQueue:
             return self.getRight(idx)
         if self.getRight(idx) > len(self.values) - 1:
             return self.getLeft(idx)
-        return self.getRight(idx) if self.values[self.getRight(idx)] > self.values[self.getLeft(idx)] else self.getLeft(idx)
+        
+        return self.getRight(idx) if self.values[self.getRight(idx)].value > self.values[self.getLeft(idx)].value else self.getLeft(idx)
         
     def remove(self):
         temp=self.values[0]
@@ -55,11 +56,6 @@ class PriorityQueue:
             if idx > len(self.values) - 1 or self.toswapwith(idx) > len(self.values) - 1: #important
                 break
         return m
-def prints(obj):
-    for i in obj.values:
-        print(i.value,end=" ")
-        print(i.Priority,end=" ")
-        print("\n")
 
 
 
