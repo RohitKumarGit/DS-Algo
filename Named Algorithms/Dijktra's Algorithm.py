@@ -52,8 +52,22 @@ def algo(v1,v2,grph):
             distances[i]=1000
             pq.add(i,1000)
             previous[i]=None
-    print(previous)
-    print(distances)
+    smallest = 0
+    while(len(pq.values) > 0):
+        
+        print(smallest)
+        smallest = pq.remove().value
+        
+        if smallest == v2:
+            print(distances[v2])
+            break
+        for v in graph.adjacanetyList[smallest]:
+            adjacentNode=v["node"]
+            candidate = v["weight"] + distances[smallest]
+            if candidate < distances[adjacentNode]:
+                distances[adjacentNode] = candidate
+                pq.add(adjacentNode,candidate)
+            
     
     
 algo("A","D",graph)
