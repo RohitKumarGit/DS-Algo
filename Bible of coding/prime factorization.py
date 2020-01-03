@@ -2,30 +2,27 @@
 #  to make time complexity sqrt(n) we check if d < sqrt(n) -- this is the only case we will have probability to find anything to divide
 # as in the worst case loop  runs sqrt(n) times TC is O(sqrt(n))
 import math
-def primeFactorization(item):
-    d=2
-    expo=[]
-    primes=[]
+def primeFactorization(n):
+    primes=[1]
+    powers=[1]
+    for i in range(2,n):
+        if i*i > n :
+            break
+        exponent=0
+        while(n%i == 0):
+            if exponent == 0:
+                primes.append(i)
+            exponent +=1
+            n =  n//i
+            if n == 1 :
+                
+                break
+        powers.append(exponent)
+    return list(zip(primes,powers))
+print(primeFactorization(6))
     
-    while item > 1 and d*d <= item:                             """
-                                                                                time complexity O(sqrt(n))
-                                                                        """
-        k=0
-        while item % d == 0:
-            item = item // d
-            k +=1
             
-        if k > 0 :
-            expo.append(k)
-            primes.append(d)
-        d +=1
-    if item > 1:
-            expo.append(1)
-            primes.append(item)    
-    return list(zip(primes,expo))
-
-print(primeFactorization(15))
-        
+            
 
         
             
